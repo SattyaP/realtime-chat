@@ -1,0 +1,11 @@
+#msg-box{
+    background-color: gainsboro;
+    padding: 10px 20px;
+    border-radius: 0px 20px 20px 20px;
+    margin-right : 20px;
+}
+
+#messages {
+    height: 80vh;
+    overflow-y: scroll;
+}
