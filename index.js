@@ -39,8 +39,8 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         if (socket.username) {
             console.log(`${socket.username} disconnected`);
-            io.emit('room-message', { usernames: socket.username, message: `${socket.username} has left the chat.` });
             usernames.clear()
+            io.emit('room-message', { usernames: socket.username, message: `${socket.username} has left the chat.` });
         }
     });
 });
