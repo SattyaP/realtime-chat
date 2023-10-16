@@ -28,6 +28,9 @@ $(() => {
         if (roomId) {
             $('#chat').show();
             $('#room-form').hide()
+            $('#messages').show()
+            $('.header-chat').show()
+            $('#warpchat').toggleClass('col-lg-6 col-lg-12')
             socket.emit('join room', roomId);
         }
     });

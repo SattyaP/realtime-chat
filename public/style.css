@@ -6,6 +6,14 @@
 }
 
 #messages {
-    height: 80vh;
+    height: 70vh;
     overflow-y: scroll;
+}
+
+.header-chat {
+    padding: 20px 20px;
+}
+
+#roomId {
+    color: #fff;
 }
