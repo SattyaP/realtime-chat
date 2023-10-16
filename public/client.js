@@ -46,7 +46,7 @@ $(() => {
 
     socket.on('room-message', (data) => {
         $('#messages').append($(`<div id="msg-box" class="mb-3">
-        <span class="text-decoration-underline" id="username">${data.usernames.slice(0, 10)}</span> <br>
+        <span class="text-decoration-underline" id="username">${data.usernames}</span> <br>
         <span>${data.message}</span>
       </div>`));
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
