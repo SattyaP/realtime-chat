@@ -56,7 +56,7 @@ $(() => {
     });
 
     socket.on('code-room', (data) => {  
-        $('#roomId').text('Chat room ID : ' + data.code)
+        $('#roomId').text('Chat Room ID : ' + data.code)
     })
     
     socket.on('user-disconnect', (username) => {
