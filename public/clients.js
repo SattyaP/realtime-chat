@@ -86,6 +86,16 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('roomId').textContent = 'Chat Room ID: ' + data.code;
     });
 
+    document.getElementById("roomId").addEventListener("click", () => {
+        let data = document.getElementById("roomId");
+        const textToCopy = data.textContent.split('Chat Room ID: '); 
+        navigator.clipboard.writeText(textToCopy[1]).then(function () {
+            alert("Copied success: " + textToCopy[1]);
+        }).catch(function (err) {
+            alert("Failed to copy: ", err);
+        });
+    });
+
     socket.on('user-disconnect', function (username) {
         const messages = document.getElementById('messages');
         const li = document.createElement('li');
