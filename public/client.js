@@ -2,6 +2,7 @@ $(() => {
     const socket = io();
     let username = null;
     let roomId = null;
+    let ownId = null;
 
     $('#login').click(function () {
         username = $('#username-input').val();
@@ -18,9 +19,10 @@ $(() => {
         alert('Username is already taken. Please choose a different username.');
     });
 
-    socket.on('login-success', () => {
+    socket.on('login-success', (socketId) => {
         $('#username-form').hide();
         $('#room-form').show();
+        ownId = socketId
     });
 
     $('#roomEnter').click(() => {
@@ -34,6 +36,18 @@ $(() => {
             socket.emit('join room', roomId);
         }
     });
+
+    $('#ownroom').click(() => {
+        roomId = ownId
+        if (roomId) {
+            $('#chat').show();
+            $('#room-form').hide()
+            $('#messages').show()
+            $('.header-chat').show()
+            $('#warpchat').toggleClass('col-lg-6 col-lg-12')
+            socket.emit('join room', roomId);
+        }
+    })
 
     $('#chat-form').submit(function () {
         let message = $('#message-input').val();

@@ -21,26 +21,37 @@ io.on('connection', (socket) => {
             } else {
                 socket.username = username;
                 usernames.set(username, socket.id);
-                socket.emit('login-success');
+                socket.emit('login-success', socket.id);
             }
         }
     });
 
     socket.on('join room', (roomId) => {
-        socket.join(roomId); 
-        io.to(roomId).emit('code-room', {code : roomId})
-        io.to(roomId).emit('room-message', {usernames: socket.username, message: 'has join the chat'});
+        socket.join(roomId);
+        io.to(roomId).emit('code-room', {
+            code: roomId
+        })
+        io.to(roomId).emit('room-message', {
+            usernames: socket.username,
+            message: 'has join the chat'
+        });
     });
 
     socket.on('chat message', (data) => {
-        io.to(data.roomId).emit('room-message', {usernames: socket.username, message: data.message });
+        io.to(data.roomId).emit('room-message', {
+            usernames: socket.username,
+            message: data.message
+        });
     });
 
     socket.on('disconnect', () => {
         if (socket.username) {
             console.log(`${socket.username} disconnected`);
             usernames.clear()
-            io.emit('room-message', { usernames: socket.username, message: `${socket.username} has left the chat.` });
+            io.emit('room-message', {
+                usernames: socket.username,
+                message: `${socket.username} has left the chat.`
+            });
         }
     });
 });
