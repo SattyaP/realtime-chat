@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Specify the path to the additional files
-          path: '.'
+          path: 'index.js'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
