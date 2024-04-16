@@ -38,6 +38,11 @@ jobs:
         with:
           # Upload entire repository
           path: './public/'
+      - name: Upload artifact - Additional files outside the folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Specify the path to the additional files
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
